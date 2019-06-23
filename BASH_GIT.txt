@@ -1,0 +1,117 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Commande de base
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+pwd				=	Affiche le répertoire courant
+ls				=	Affiche le contenu du répertoire courant
+cd ..				=	Recule d'un niveau dans les répertoires
+cd Desktop			=	Nous place dans le répertoire indiqué
+mkdir nomDuRepertoire		=	Permet de créer un répertoire
+touch fichier.txt		=	Permet de créer un fichier
+cat fichier.txt			=	Affiche le contenu du fichier
+vim fichier.txt			=	active l'éditeur VIM pour modifier le fichier sité
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Commande initiale
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+git init			=	Défini le répertoire courant comme master
+git config --global user.name "nom ou pseudo"	=	Défini le nom ou pseudo de l'utilisateur
+git config --global user.email "eMail"		=	Défini l'adresse mail de l'utilisateur
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Commande de versionning
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+git add README.md		=	Ajoute l'élément indiqué à l'index du répertoire master courant
+git add .			=	Ajoute tout les éléments manquant à l'index du répertoire master courant
+git commit -a -m "commentaire"	=	créer un enregistrement (versionning) des modification effectué, 
+					l'option -a indique à git de mettre à jour les fichiers déjà indexé,
+					l'option -m permet de définir un commentaire sur le commit effectué
+git log				=	Affiche la liste de tout les commits effectué sur le master courant
+git commit --amend -m "comment"	=	Modifie le commentaire du dernier commit effectué (tant que celui-ci n'a pas encore été pushé)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Commande de navigation dans les commits
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+git checkout SHA_du_commit	=	Permet de revoir les fichiers dans l'état au moment du commit choisi
+git checkout master		=	Retourne au dernier commit effectuer (le plus récent)
+git reset --hard		=	Annule toutes les modifications faites depuis le dernier commit
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Commande de synchro GitHub
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+git clone lienGitHub		=	Créer dans le répertoire courant, un clone du répertoire stocké sur GitHub en mode master
+git push origin master		=	Envoie sur GitHub les modifications et commits effectué sur le clone master 
+git pull origin master		=	Permet de récupérer dans le clone courant, les modification pushé sur GitHub
+					(soit par une autre personne, ou que vous auriez effectué depuis un autre poste)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Commande de gestion des branches
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+git branch			=	Affiche la liste des branches existantes pour le master actif
+git branch nomBranch		=	Créer une nouvelle branch avec le nom indiqué
+git checkout nomBranch		=	Ce place dans la branch sélectionné
+git checkout master		=	retourn au niveau master
+git checkout -b nomBranch	=	Permet de ce positionner dans la branch indiqué
+					l'option -b va créer la branch avant de ci positionner
+git merge nomBranch		=	synchronise les modifications ainsi que les commits de la branch indiqué sur la branch active
+git branch -D nomBranch		=	Supprime la branch indiqué en paramètre
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Gestion de conflit merge
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+1 # Après avoir tenté un merge de branch1 depuis master par exemple
+2 # Git affiche un message de "CONFLICT (content):..."
+3 # Utiliser un éditeur de texte afin de visualiser le conflit
+4 # Corriger manuellement le conflit depuis l'éditeur de text, en indiquant quoi garder et quoi supprimer
+5 # Utiliser la commande "git add nomFichier", pour indiquer à git que le conflit et résolu
+6 # utiliser ensuite la commande "git commit" sans paramètre ni commentaire
+7 # Dans le message qui apparaît, vous pourrez soit éditer votre message de commit, soit
+	conserver celui par défault en faisant ":x"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Retrouver le responsable de la modification d'un fichier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+git blame nomFichier.extension	=	Affiche le contenu du fichier sélectionné avec devant chaque ligne
+					- le début du sha du dernier commit effectué
+					- le nom de l'auteur de la modif
+					- la date de modification
+					- l'état de la ligne au moment du commit
+git show 7c462272		=	Affiche les modification faite en rapport au commit correspondant, indiqué en paramètre
+					(inscrire uniquement le début du sha, comme donné avec la commande git blame)
+					Affiche également toutes les informations concernant l'auteur du commit et des modifications
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sécurité
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Attention à ne JAMAIS versionner et pushé :
+- les fichiers de configurations
+- Les fichiers temporaire
+- Les fichier inutiles créer par l'IDE ou l'OS
+- TOUT fichier contenant des données sensibles telles que des mots de passe ou clé de hashage
+
+.gitignore			=	Créer ce fichier à la racine du dossier master
+					inscrire les dossiers et fichiers, ligne par ligne, qui doivent être ignoré par les commit
+					le fichier .gitignore doit quand à lui être ajouté à l'index et commité
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Temporisation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+git stash			=	Met de coté toute les modifications faite depuis le dernier commit
+git stash pop			=	Restaure les modifications misent de côté et vide le stash
+git stash apply			=	Restaure les modifications misent de côté sans vider le stash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
